@@ -7,11 +7,14 @@ let handleSubmit = event => {
   event.preventDefault();
 };
 
+let handleChange = event => {
+};
+
 export default function App() {
   return (
     <div>
       <Header></Header>
-      <Request onSubmit={handleSubmit}></Request>
+      <Request onSubmit={handleSubmit} onChange={handleChange}></Request>
       <Response></Response>
     </div> 
   )
