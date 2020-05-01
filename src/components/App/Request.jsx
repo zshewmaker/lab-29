@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Request = () => (
-  <form>
+const Request = ({ onSubmit }) => (
+  <form onSubmit={onSubmit}>
     URL:<input type="text"/>
     Method:
     <input type="radio" name="method"/> get
@@ -15,7 +15,7 @@ const Request = () => (
 );
 
 Request.propTypes = {
-
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Request;
