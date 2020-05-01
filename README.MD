@@ -18,6 +18,7 @@ Input field for entering a URL
 Radio Buttons for method (GET/PUT/POST/DELETE)
 Input field for typing in JSON for POST/PUT
 Full Testing and Documentation are required.
+
 Stretch Goals
 Use authenticated APIs by sending either Basic or Bearer Auth, when specified
 Username+Password entry for Basic Auth
