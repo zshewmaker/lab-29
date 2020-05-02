@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header.jsx';
 import Response from './Response.jsx';
 import Request from './Request.jsx';
 
-let handleSubmit = event => {
+export default class App extends Component {
+
+  state = {
+    httpMethod: '',
+    url: '',
+    body: ''
+  }
+
+handleSubmit = event => {
   event.preventDefault();
+  console.log(this.state.httpMethod);
+  console.log(this.state.url);
+  console.log(this.state.body);
 };
 
-let handleChange = event => {
+handleHttpMethodChange = event => {
+  this.setState({ httpMethod: event.currentTarget.value });
 };
 
-export default function App() {
+handleUrlChange = event => {
+  this.setState({ url: event.currentTarget.value });
+};
+
+handleBodyChange = event => {
+  this.setState({ body: event.currentTarget.value });
+};
+
+render() {
   return (
     <div>
       <Header></Header>
-      <Request onSubmit={handleSubmit} onChange={handleChange}></Request>
+      <Request url={this.state.url} body={this.state.body} onSubmit={this.handleSubmit} onHttpMethodChange={this.handleHttpMethodChange} onUrlChange={this.handleUrlChange} onBodyChange={this.handleBodyChange}></Request>
       <Response></Response>
     </div> 
   )
   ;
-} 
+}}
+
