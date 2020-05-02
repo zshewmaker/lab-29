@@ -6,16 +6,26 @@ import Request from './Request.jsx';
 export default class App extends Component {
 
   state = {
-    httpMethod: '',
+    httpMethod: 'GET',
     url: '',
-    body: ''
+    body: '',
+    apiResponse: '',
   }
 
 handleSubmit = event => {
   event.preventDefault();
-  console.log(this.state.httpMethod);
-  console.log(this.state.url);
-  console.log(this.state.body);
+  if(this.state.httpMethod === 'GET' || this.state.httpMethod === 'DELETE') {
+    fetch(this.state.url, { method:this.state.httpMethod })
+      .then(res => res.json())
+      .then(response => {
+        this.setState({ apiResponse:response });
+        console.log(resdponse);
+      });
+  } else {
+    fetch(this.state.url, { method:this.state.httpMethod, body:this.state.body })
+      .then(res => res.json())
+      .then(response => this.setState({ apiResponse:response }));
+  }
 };
 
 handleHttpMethodChange = event => {
@@ -35,7 +45,7 @@ render() {
     <div>
       <Header></Header>
       <Request url={this.state.url} body={this.state.body} onSubmit={this.handleSubmit} onHttpMethodChange={this.handleHttpMethodChange} onUrlChange={this.handleUrlChange} onBodyChange={this.handleBodyChange}></Request>
-      <Response></Response>
+      <Response apiResponse={this.state.apiResponse}></Response>
     </div> 
   )
   ;
