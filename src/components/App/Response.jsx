@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactJson from 'react-json-view';
+import './Response.css';
 
 const Request = ({ apiResponse }) => (
   <div>
-    { JSON.stringify(apiResponse)}
+    <p className="api-response">
+      <ReactJson name="Response" src={apiResponse}/>
+    </p>
   </div>
 );
 

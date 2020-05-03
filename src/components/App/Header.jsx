@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './Header.css';
 
 const Request = () => (
-  <div>
-      Header
-  </div>
+  <header>
+      Lab 29 Rest App
+  </header>
 );
-
-Request.propTypes = {
-
-};
 
 export default Request;

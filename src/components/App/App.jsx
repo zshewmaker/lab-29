@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header.jsx';
 import Response from './Response.jsx';
 import Request from './Request.jsx';
+import './App.css';
 
 export default class App extends Component {
 
@@ -9,7 +10,7 @@ export default class App extends Component {
     httpMethod: 'GET',
     url: '',
     body: '',
-    apiResponse: '',
+    apiResponse: {},
   }
 
 handleSubmit = event => {
@@ -19,7 +20,6 @@ handleSubmit = event => {
       .then(res => res.json())
       .then(response => {
         this.setState({ apiResponse:response });
-        console.log(resdponse);
       });
   } else {
     fetch(this.state.url, { method:this.state.httpMethod, body:this.state.body })
